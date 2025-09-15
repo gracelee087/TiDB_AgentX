@@ -38,8 +38,8 @@ A sophisticated financial question processing system that demonstrates real-worl
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
-cd tidb-agentx-hackathon
+git clone https://github.com/gracelee087/TiDB_AgentX.git
+cd TiDB_AgentX
 ```
 
 ### 2. Install Dependencies
@@ -175,7 +175,7 @@ tidb-agentx-hackathon/
 ## 🏅 Hackathon Submission
 
 **TiDB Cloud Account Email**: [Your email]
-**Repository URL**: [Your repository URL]
+**Repository URL**: https://github.com/gracelee087/TiDB_AgentX.git
 **Demo Video**: [Link to your demonstration video]
 
 ## 📞 Support
