@@ -269,6 +269,9 @@ class TiDBCloudManager:
             print(f"Vector document save failed: {e}")
             return False
     
+
+
+    # Technical Highlights
     def search_vector_documents(self, query_embedding: list, limit: int = 6, threshold: float = 0.5):
         """Search documents in TiDB."""
         if not self.session:
@@ -502,6 +505,8 @@ def get_llm(model='gpt-4o'):
     return llm
 
 
+
+# AI answer generation
 def get_rag_chain():
     """
     Reconstruct RAG chain and prompts.

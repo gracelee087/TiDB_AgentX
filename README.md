@@ -166,7 +166,7 @@ tidb-agentx-hackathon/
 ├── main.py              # Main application entry point
 ├── llm.py               # TiDB integration and AI processing
 ├── requirements.txt     # Python dependencies
-├── Guide.docx          # Financial document (your data)
+├── Guide.docx          # Financial document (own created data)
 ├── ca-cert.pem         # TiDB CA certificate
 ├── .env                # Environment configuration
 └── README.md           # This file

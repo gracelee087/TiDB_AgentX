@@ -25,8 +25,11 @@ from llm import (
     enhanced_retriever_search,
     add_guide_document
 )
-# Slack integration removed for hackathon submission
 
+
+
+
+# first - users input financial questions through the terminal
 def process_question(user_question: str, session_id: str = None) -> Dict[str, Any]:
     """
     Main function to process user questions
@@ -46,7 +49,7 @@ def process_question(user_question: str, session_id: str = None) -> Dict[str, An
     print("=" * 60)
     
     try:
-        # 0. Auto-vectorize if no vector documents exist
+        # 2. the system uses TiDB Vector Search to find relevant documents
         from sqlalchemy import text
         conn = tidb_manager.engine.connect()
         result = conn.execute(text("SELECT COUNT(*) FROM vector_documents"))
@@ -56,10 +59,9 @@ def process_question(user_question: str, session_id: str = None) -> Dict[str, An
         if doc_count == 0:
             print("🔄 No vector documents found, vectorizing Guide.docx...")
             add_guide_document()
+
         
-        # 1. Question processing started
-        
-        # 2. Save user question to TiDB
+
         print("1️⃣ Saving user question to TiDB...")
         tidb_manager.save_chat_message(
             session_id=session_id,
@@ -72,29 +74,29 @@ def process_question(user_question: str, session_id: str = None) -> Dict[str, An
         )
         print("✅ Question saved successfully")
         
-        # 3. Search financial documents using TiDB Vector Search (cosine distance)
+        # 2-1. Search financial documents using TiDB Vector Search (cosine distance)
         print("2️⃣ Searching financial documents using TiDB Vector Search...")
         docs, search_score = enhanced_retriever_search(user_question, session_id)
         print(f"✅ Search completed: {len(docs)} documents, average score: {search_score:.4f}")
         
-        # 4. Search results confirmed
-        
-        # 5. Generate AI response using OpenAI based on found documents
+
+
+
+        # 3. OpenAI GPT-4 analyzes the search results and generates accurate answers. 
         print("3️⃣ Generating AI response using OpenAI...")
         ai_response = get_ai_response_with_logging(user_question, session_id)
         
-        # 6. Collect AI response
+   
         response_text = ""
         for chunk in ai_response:
             if hasattr(chunk, 'content'):
                 response_text += chunk.content
         
-        # 7. Save AI response to TiDB
+        # 4. finally all interactions are stored in TiDB Cloud for audit and analysis 
         print("4️⃣ Saving AI response to TiDB...")
         save_ai_response(response_text, session_id)
         print("✅ AI response saved successfully")
         
-        # 8. AI response completed
         
         result = {
             "status": "success",
