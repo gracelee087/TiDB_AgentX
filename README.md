@@ -174,13 +174,9 @@ tidb-agentx-hackathon/
 
 ## 🏅 Hackathon Submission
 
-**TiDB Cloud Account Email**: [Your email]
+**TiDB Cloud Account Email**: gracelee.087@gmail.com
 **Repository URL**: https://github.com/gracelee087/TiDB_AgentX.git
-**Demo Video**: [Link to your demonstration video]
 
-## 📞 Support
-
-For technical issues or questions about this implementation, please refer to the TiDB Cloud documentation or create an issue in this repository.
 
 ---
 
