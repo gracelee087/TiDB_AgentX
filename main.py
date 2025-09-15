@@ -142,7 +142,7 @@ def main():
                 break
             
             if not user_question:
-                print("❌ Please enter a question.")
+                print("❌ Please enter a question..")
                 continue
             
             # Process question
